@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <main class="glass-card">
+        <div class="icon-container">
+            <div class="url-icon">
+                <i class="fas fa-link"></i>
+            </div>
+        </div>
+
+        <h1 class="text-center title">WOW, Short your URL!</h1>
+
+        <form method="POST" action="/shorten">
+            <div class="mb-4">
+                <label for="url" class="form-label">Enter your long URL</label>
+                <input id="url" name="url" type="text" class="form-control" placeholder="very very long url" value="{{.LongURL}}">
+            </div>
+
+            <button class="btn btn-primary">
+                <i class="fas fa-compress-alt me-2"></i> Shorten URL
+            </button>
+        </form>
+
+        {{if .ShortURL}}
+            <p>Short url
+                <a href="{{.ShortURL}}">{{.ShortURL}}</a>
+            </p>
+        {{end}}
+
+        <div class="feature-text">
+            <p>
+                <i class="fas fa-lock"></i> Secure &nbsp;&nbsp;
+                <i class="fas fa-bolt"></i> Fast &nbsp;&nbsp;
+                <i class="fas fa-infinity"></i> Reliable
+            </p>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
