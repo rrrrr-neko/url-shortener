@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -22,8 +23,13 @@ func main() {
 	http.HandleFunc("/shorten", handleShorten)
 	http.HandleFunc("/wow/", handleRedirect)
 
-	log.Println("Сервер запущен на http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	port := os.Getenv("Port")
+	if port == "" {
+		port = "8080"
+	}
+
+	log.Println("Listening on port", port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
 func handleIndex(w http.ResponseWriter, r *http.Request) {
@@ -45,7 +51,7 @@ func handleShorten(w http.ResponseWriter, r *http.Request) {
 		ShortURL string
 		LongURL  string
 	}{
-		ShortURL: "http://localhost:8080/wow/" + key,
+		ShortURL: "http://wow/" + key,
 		LongURL:  longURL,
 	}
 	tmpl.Execute(w, data)
