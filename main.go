@@ -23,7 +23,7 @@ func main() {
 	http.HandleFunc("/shorten", handleShorten)
 	http.HandleFunc("/wow/", handleRedirect)
 
-	port := os.Getenv("Port")
+	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
@@ -47,11 +47,19 @@ func handleShorten(w http.ResponseWriter, r *http.Request) {
 
 	key := generateKey()
 	urls[key] = longURL
+
+	scheme := "http"
+	if r.Header.Get("X-Forwarded-Proto") == "https" {
+		scheme = "https"
+	}
+	shorturl := scheme + "://" + r.Host + "/wow/" + key
+
 	data := struct {
 		ShortURL string
 		LongURL  string
 	}{
-		ShortURL: "http://wow/" + key,
+
+		ShortURL: shorturl,
 		LongURL:  longURL,
 	}
 	tmpl.Execute(w, data)
