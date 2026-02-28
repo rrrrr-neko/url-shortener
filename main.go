@@ -119,13 +119,13 @@ func handleShorten(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// scheme := "http"
-	// if r.Header.Get("X-Forwarded-Proto") == "https" {
-	// 	scheme = "https"
-	// }
-	// shorturl := scheme + "://" + r.Host + "/wow/" + key
+	scheme := "http"
+	if r.Header.Get("X-Forwarded-Proto") == "https" {
+		scheme = "https"
+	}
+	shorturl := scheme + "://" + r.Host + "/wow/" + key
 
-	shorturl := "/wow/" + key
+	// shorturl := "/wow/" + key
 	data := struct {
 		ShortURL string
 		LongURL  string
