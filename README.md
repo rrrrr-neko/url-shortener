@@ -42,7 +42,7 @@ The service converts long URLs into compact, shareable short links.
 
 ---
 
-## 🗂 Project Structure
+## Project Structure
 
 ```
 URL-Shortener/
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS urls(
 );
 ```
 
-## 🍪 Anonymous User Tracking
+## Anonymous User Tracking
 
 Each visitor receives a `session_id` cookie.
 
@@ -94,7 +94,7 @@ This allows:
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Go 1.24**
 - `net/http`
