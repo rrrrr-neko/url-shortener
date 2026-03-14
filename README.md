@@ -5,10 +5,10 @@
 [![Deployed on Railway](https://img.shields.io/badge/Deployed-Railway-purple.svg)](https://railway.app/)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-green.svg)](https://sunny-quietude-production.up.railway.app/)
 
-A minimal production-ready URL shortener built with **Go**, **SQLite**, and deployed on **Railway**.
+A minimal production-ready URL shortener built with **Go**, **SQLite**, and deployed on **Render**.
 
 **Live Demo:**
-👉 https://sunny-quietude-production.up.railway.app/
+[https://sunny-quietude-production.up.railway.app/](https://url-shortener-l424.onrender.com/)
 
 ---
 
